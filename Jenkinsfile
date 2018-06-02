@@ -4,7 +4,7 @@
  * the docker label */  
 node {
     /* Setup vars */
-    String appName = "basic-html"
+    String applicationName = "basic-html"
     String goPath = "/go/src/github.com/GandhiNN/${applicationName}"
 
     def app
@@ -20,11 +20,11 @@ node {
     stage('Build Go Binaries') {
         docker.image("golang:1.8.0-alpine").inside("-v ${pwd()}:${goPath}") {
             // build the Mac x64 binary
-            sh "cd ${goPath} && GOOS=darwin GOARCH=amd64 go build -o binaries/amd64/darwin/${appName}.darwin.amd64"
+            sh "cd ${goPath} && GOOS=darwin GOARCH=amd64 go build -o binaries/amd64/darwin/${applicationName}.darwin.amd64"
             // build the Windows x64 binary
-            sh "cd ${goPath} && GOOS=windows GOARCH=amd64 go build -o binaries/amd64/windows/${appName}.windows.amd64.exe"
+            sh "cd ${goPath} && GOOS=windows GOARCH=amd64 go build -o binaries/amd64/windows/${applicationName}.windows.amd64.exe"
             // build the Linux x64 binary
-            sh "cd ${goPath} && GOOS=linux GOARCH=amd64 go build -o binaries/amd64/linux/${appName}.linux.amd64"
+            sh "cd ${goPath} && GOOS=linux GOARCH=amd64 go build -o binaries/amd64/linux/${applicationName}.linux.amd64"
         }
     }
 
