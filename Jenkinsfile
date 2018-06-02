@@ -2,12 +2,11 @@
 
 /* This will start an executor on a Jenkins agent with
  * the docker label */  
-node {
+node('docker') {
     /* Setup vars */
     String applicationName = "basic-html"
     String goPath = "/go/src/github.com/GandhiNN/${applicationName}"
 
-    def app
     /* Checkout the code from GitHub */
     /* Stages allow Jenkins to visualize the different 
      * sections of our build steps in the UI */
