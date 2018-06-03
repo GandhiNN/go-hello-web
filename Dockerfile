@@ -16,5 +16,8 @@ RUN apt-get update && \
         gnupg2 \
         software-properties-common
 
+# Install Golang
+RUN apt-get install -y golang-go
+
 # Expose port
 EXPOSE 8080
